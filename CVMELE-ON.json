@@ -1,0 +1,546 @@
+{
+  "name": "CVMELE-ON",
+  "nodes": [
+    {
+      "parameters": {
+        "updates": [
+          "message"
+        ],
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegramTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        -592,
+        -16
+      ],
+      "id": "97a98b7d-5ef2-4328-bbce-cafa381be480",
+      "name": "Telegram Trigger",
+      "webhookId": "36e3b97f-4047-4c87-ae50-00f8bf64099f",
+      "alwaysOutputData": false,
+      "credentials": {
+        "telegramApi": {
+          "id": "jiebBX8xLgrJE9YD",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "copy",
+        "fileId": {
+          "__rl": true,
+          "value": "12ZTNXGLc-gJNfjxna4hhtwr4yhD7fh-rLb0Pb-PObe0",
+          "mode": "list",
+          "cachedResultName": "TEMPLATE_CV_LAMINE",
+          "cachedResultUrl": "https://docs.google.com/document/d/12ZTNXGLc-gJNfjxna4hhtwr4yhD7fh-rLb0Pb-PObe0/edit?usp=drivesdk"
+        },
+        "name": "=CV_Lamine_{{ $('Agent CV').item.json.output[0].content[0].text.TITRE_CIBLE }}.pdf",
+        "sameFolder": false,
+        "driveId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "My Drive"
+        },
+        "folderId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "root",
+          "cachedResultName": "/ (Root folder)"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        704,
+        -16
+      ],
+      "id": "c4a66e0c-3a48-4258-9e45-51fc313d541a",
+      "name": "Copy file",
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "cDrn6pLcsmT7JNla",
+          "name": "Google Drive account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentURL": "={{ $json.id }}",
+        "actionsUi": {
+          "actionFields": [
+            {
+              "action": "replaceAll",
+              "text": "{{TITRE_CIBLE}}",
+              "replaceText": "={{ $('Agent CV').item.json.output[0].content[0].text.TITRE_CIBLE }}",
+              "matchCase": true
+            },
+            {
+              "action": "replaceAll",
+              "text": "{{ACCROCHE_PROFIL}}",
+              "replaceText": "={{ $('Agent CV').item.json.output[0].content[0].text.ACCROCHE_PROFIL }}",
+              "matchCase": true
+            },
+            {
+              "action": "replaceAll",
+              "text": "{{COURS_MASTER_LIST}}",
+              "replaceText": "={{ $('Agent CV').item.json.output[0].content[0].text.COURS_MASTER_LIST }}",
+              "matchCase": true
+            },
+            {
+              "action": "replaceAll",
+              "text": "{{PROJET_1_TITRE}}",
+              "replaceText": "={{ $('Agent CV').item.json.output[0].content[0].text.PROJET_1_TITRE }}",
+              "matchCase": true
+            },
+            {
+              "action": "replaceAll",
+              "text": "{{PROJET_1_DESC}}",
+              "replaceText": "={{ $('Agent CV').item.json.output[0].content[0].text.PROJET_1_DESC }}",
+              "matchCase": true
+            },
+            {
+              "action": "replaceAll",
+              "text": "{{PROJET_2_DESC}}",
+              "replaceText": "={{ $('Agent CV').item.json.output[0].content[0].text.PROJET_2_DESC }}",
+              "matchCase": true
+            },
+            {
+              "action": "replaceAll",
+              "text": "{{EXP_TUTEUR_DESC}}",
+              "replaceText": "={{ $('Agent CV').item.json.output[0].content[0].text.EXP_TUTEUR_DESC }}",
+              "matchCase": true
+            },
+            {
+              "action": "replaceAll",
+              "text": "{{EXP_DECATHLON_DESC}}",
+              "replaceText": "={{ $('Agent CV').item.json.output[0].content[0].text.EXP_DECATHLON_DESC }}",
+              "matchCase": true
+            },
+            {
+              "action": "replaceAll",
+              "text": "{{SOFT_SKILLS_LIST}}",
+              "replaceText": "={{ $('Agent CV').item.json.output[0].content[0].text.SOFT_SKILLS_LIST }}",
+              "matchCase": true
+            },
+            {
+              "action": "replaceAll",
+              "text": "{{TOP_SKILLS_LIST}}",
+              "replaceText": "={{ $('Agent CV').item.json.output[0].content[0].text.TOP_SKILLS_LIST }}",
+              "matchCase": true
+            },
+            {
+              "action": "replaceAll",
+              "text": "{{TOP_IA_SKILLS_LIST}}",
+              "replaceText": "={{ $('Agent CV').item.json.output[0].content[0].text.TOP_IA_SKILLS_LIST }}",
+              "matchCase": true
+            },
+            {
+              "action": "replaceAll",
+              "text": "{{PROJET_2_TITRE}}",
+              "replaceText": "={{ $('Agent CV').item.json.output[0].content[0].text.PROJET_2_TITRE }}",
+              "matchCase": true
+            },
+            {
+              "action": "replaceAll",
+              "text": "{{PROJET_3_TITRE}}",
+              "replaceText": "={{ $('Agent CV').item.json.output[0].content[0].text.PROJET_3_TITRE }}",
+              "matchCase": true
+            },
+            {
+              "action": "replaceAll",
+              "text": "{{PROJET_3_DESC}}",
+              "replaceText": "={{ $('Agent CV').item.json.output[0].content[0].text.PROJET_3_DESC }}",
+              "matchCase": true
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.googleDocs",
+      "typeVersion": 2,
+      "position": [
+        896,
+        -16
+      ],
+      "id": "3f384c2b-32d5-4288-9e2c-11825d54fbc0",
+      "name": "Update a document",
+      "credentials": {
+        "googleDocsOAuth2Api": {
+          "id": "tkGqX17pYbesi3Xu",
+          "name": "Google Docs account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "download",
+        "fileId": {
+          "__rl": true,
+          "mode": "id",
+          "value": "={{ $json.documentId }}"
+        },
+        "options": {
+          "binaryPropertyName": "data",
+          "googleFileConversion": {
+            "conversion": {
+              "docsToFormat": "application/pdf",
+              "drawingsToFormat": "application/pdf",
+              "slidesToFormat": "application/pdf",
+              "sheetsToFormat": "application/pdf"
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        1136,
+        -16
+      ],
+      "id": "6a310eff-9f94-44c7-aecd-2cfa778cdcbe",
+      "name": "Download file",
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "cDrn6pLcsmT7JNla",
+          "name": "Google Drive account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "sendDocument",
+        "chatId": "={{ $node[\"Telegram Trigger\"].json.message.chat.id }}",
+        "binaryData": true,
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        1376,
+        -16
+      ],
+      "id": "51703422-09d8-47dc-af2f-d00a30a169cc",
+      "name": "Send a document",
+      "webhookId": "1d11cc68-a5ec-4cc4-83e1-3f9badd033c7",
+      "credentials": {
+        "telegramApi": {
+          "id": "jiebBX8xLgrJE9YD",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "deleteFile",
+        "fileId": {
+          "__rl": true,
+          "value": "={{ $('Copy file').item.json.id }}",
+          "mode": "id"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        1600,
+        -16
+      ],
+      "id": "9b326e11-fdb1-4955-9600-48057c8f3ac4",
+      "name": "Delete a file",
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "cDrn6pLcsmT7JNla",
+          "name": "Google Drive account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://google.serper.dev/search",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "X-API-KEY",
+              "value": "3c8e39ee2ff57ee42766cb9a8b267de4edba4778"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"q\": \"culture d'entreprise valeurs et missions de {{ $json.output[0].content[0].text.company_name }}\"\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        -112,
+        -16
+      ],
+      "id": "dd3b096f-1c11-4756-9292-080c4c19ef83",
+      "name": "HTTP Request"
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4o-mini",
+          "mode": "list",
+          "cachedResultName": "GPT-4O-MINI"
+        },
+        "responses": {
+          "values": [
+            {
+              "role": "system",
+              "content": "Tu es un assistant spécialisé dans l'analyse d'offres d'emploi. Ta mission est d'extraire uniquement le nom de l'entreprise et l'intitulé exact du poste.\n\nRéponds EXCLUSIVEMENT sous ce format JSON brut :\n{\n\"company_name\": \"Nom de la boîte\",\n\"job_title\": \"Intitulé du poste\"\n}"
+            },
+            {
+              "content": "={{ $json.message.text }}"
+            }
+          ]
+        },
+        "builtInTools": {},
+        "options": {
+          "textFormat": {
+            "textOptions": {
+              "type": "json_schema",
+              "schema": "{\n  \"type\": \"object\",\n  \"properties\": {\n    \"company_name\": {\n      \"type\": \"string\"\n    },\n    \"job_title\": {\n      \"type\": \"string\"\n    }\n  },\n  \"required\": [\n    \"company_name\",\n    \"job_title\"\n  ],\n  \"additionalProperties\": false\n}"
+            }
+          },
+          "temperature": 1
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 2.1,
+      "position": [
+        -416,
+        -16
+      ],
+      "id": "c3809e21-da0a-4f9a-a010-e44b67671165",
+      "name": "Agent Recherche",
+      "credentials": {
+        "openAiApi": {
+          "id": "SRZmmUwHmsK6yNUu",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4o-mini",
+          "mode": "list",
+          "cachedResultName": "GPT-4O-MINI"
+        },
+        "responses": {
+          "values": [
+            {
+              "role": "system",
+              "content": "RÔLE : SYSTEME MULTI-AGENTS EXPERT EN RECRUTEMENT (V18-ELITE)\nTu es une IA spécialisée en Career Design et Architecture JSON. Ta mission est de transformer les données d'un étudiant ingénieur (M1 – JUNIA ISEN) en un CV à haute valeur ajoutée, optimisé pour la lecture humaine et les algorithmes ATS.\n\nPROTOCOLE DE RAISONNEMENT (CHAIN OF THOUGHT)\nAvant de générer le JSON, tu dois suivre ces étapes de réflexion interne :\n\nÉTAPE 1 : EXTRACTION & NETTOYAGE CHIRURGICAL\nIdentifie l'intitulé métier de l'offre.\n\nContrainte stricte : Supprime toute mention de genre (H/F, F/H, M/F) ou codes de référence internes. Seul le titre pur doit rester.\n\nÉTAPE 2 : DIAGNOSTIC ADN (BIBLIOTHÈQUE DES TONS)\nAnalyse l'offre d'emploi pour déterminer le TON dominant :\n\nCORPORATE (Rigueur, standards, process) → Focus : Robustesse et industrialisation.\n\nAGILE/STARTUP (Vitesse, autonomie, croissance) → Focus : Impact rapide et itération.\n\nCOLLABORATIF (Équipe, mentorat, collectif) → Focus : Apprentissage et humain.\n\nAFFAIRE/BUSINESS (KPI, ROI, enjeux métier) → Focus : Valeur ajoutée et performance.\n\nÉTAPE 3 : ARCHITECTURE DE L'ACCROCHE\nConstruis un bloc ACCROCHE_PROFIL de 3 segments minimum :\n\nIdentité : \"Étudiant ingénieur en Intelligence Artificielle (M1 – JUNIA ISEN).\"\n\nDisponibilité (NON-NÉGOCIABLE) : \"Recherche d'une alternance de 12 mois dès septembre 2026 au rythme de 1 mois école / 1 mois entreprise.\" (Ignore les rythmes de l'offre si différents).\n\nLe Pont Apprenant : Sélectionne la phrase exacte selon le diagnostic de l'ÉTAPE 2 :\n\nLe Pont Apprenant (Hybridation Tech/Business) : Sélectionne la variante selon le diagnostic ADN :\n\nSI CORPORATE (Standard & Qualité) :\n\n\"Fort d'une maîtrise des fondamentaux de l'IA via le projet [NOM], j'ambitionne de rejoindre [ENTREPRISE] pour apprendre à transformer ces acquis académiques en solutions robustes et industrialisées, alignées sur vos standards de production.\"\n\nSI AGILE (Vitesse & Impact) :\n\n\"Ayant démontré une capacité de prototypage rapide sur [NOM], je souhaite intégrer [ENTREPRISE] pour apprendre à itérer en environnement réel et traduire mes développements en valeur métier immédiate.\"\n\nSI AFFAIRE (ROI & Stratégie) :\n\n\"Maîtrisant la valorisation des données sur [NOM], mon objectif est d'apprendre auprès de [ENTREPRISE] à corréler mes analyses techniques à vos indicateurs de performance (KPI) et vos enjeux de rentabilité.\"\n\nSI COLLABORATIF (Expertise & Transmission) :\n\n\"Après avoir exploré l'IA de manière autonome sur [NOM], je cherche chez [ENTREPRISE] un cadre d'excellence pour confronter mes méthodes à celles de vos experts et progresser au cœur de vos projets collectifs.\"\n\n\n\nDEFAUT : \"À l'image de ma démarche sur le projet [NOM], je souhaite apporter ma capacité d'apprentissage rapide à [ENTREPRISE] pour progresser au rythme de vos enjeux techniques.\"\n\nÉTAPE 4 : CURATION DES DONNÉES CERTIFIÉES\nSélectionne les 3 projets les plus pertinents. Applique scrupuleusement ce formatage :\n\nNom : \"Projet [IA ou Web ou Data] – [NOM DU PROJET]\"\n\nDescription :\n\nLigne 1 : La Solution (Problème résolu).\n\nLigne 2 : L'Impact (Métrique, max 20 mots, structure directe [Action] + [Impact] + [Bénéfice]).\n\n--- AGENT 4 : CURATEUR DE DONNÉES (SOCLE DE VÉRITÉ) ---\nSélectionne les 3 projets les plus pertinents. Respecte scrupuleusement cette nomenclature et ce formatage de saut de ligne.\n\nNOMENCLATURE TITRE : \"Projet [IA ou Web ou Data] – [NOM DU PROJET]\"\n\nFORMAT DESCRIPTION (STRICT) :\n- Ligne 1 (Solution & Impact) : Explique la solution et la métrique (ex: \"Gain de 95%\").\n- Ligne 2 (SAUT DE LIGNE OBLIGATOIRE) : Tu dois impérativement insérer le marqueur \\n pour passer à la ligne suivante.\n- Ligne 3 (Technologies) : \"\\n Technologies utilisées : [Liste]\"\n\nDONNÉES CERTIFIÉES (À UTILISER) :\n- PROJET IA – CVMELE-ON : Agent RAG adaptatif automatisant 95% du cycle de candidature et du suivi RH via une personnalisation (\"Be Water\"). \\n Technologies utilisées : n8n, OpenAI, Telegram API.\n- PROJET IA – ONE4LL : Prototypage d'une Interface IA inclusive pour 12M de citoyens via une architecture multi-agents (RAG) optimisant l'accessibilité numérique. \\n Technologies utilisées : Python, LangGraph, OpenAI Multimodal.\n- PROJET DATA – Airbnb NY : Pipeline de Machine Learning analysant 48k annonces pour prédire et optimiser les prix de location (MAE 49.9$). \\n Technologies utilisées : Langage R, Arbres de décision.\n- PROJET IA – BrickBreaker : Agent autonome entraîné par Reinforcement Learning sur Unity pour résoudre des comportements physiques complexes. \\n Technologies utilisées : Unity, Reinforcement Learning.\n\nCONTRANITE DE FORMATAGE :\nDans le JSON final, la valeur de chaque \"PROJET_X_DESC\" doit obligatoirement contenir la séquence \"\\n Technologies utilisées :\". Le système ne validera pas le CV si la liste des technos est sur la même ligne que la description.\n\nINTERDICTION : Pas de voix passive (\"a permis de\", \"a amélioré\").\n\nBase de données certifiée :\n\nONE4LL (IA) : IA inclusive pour 12M de personnes. Architecture LangGraph (RAG). \\n Technologies utilisées : Python, LangGraph, OpenAI Multimodal.\n\nAirbnb NY (Data) : Analyse de 48 895 annonces. Modélisation avec MAE de 49.9$. \\n Technologies utilisées : Langage R, Arbres de décision.\n\nBrickBreaker (IA) : Agent intelligent autonome. RL sur Unity. \\n Technologies utilisées : Unity, Reinforcement Learning.\n\nWeforecast (Web) : Simulateur de réussite académique fullstack. \\n Technologies utilisées : Python, SQL, React.js.\n\nCVMELE-ON (IA) : Pipeline RAG automatisant la génération de candidatures et suivi RH via n8n. Gain de temps de 95%. \\n Technologies utilisées : n8n, OpenAI, Telegram API.\n\nExpériences RH :\n\nACADOMIA : Pilotage de 25 tuteurs. Progression de +2 points sur la moyenne de 6 élèves.\n\nDECATHLON : Interface technique Design/Production. Protocoles de tests en conditions réelles.\n\nCONTRÔLES DE SORTIE (VALIDATION FINALE)\nZéro Balise : Supprime tout caractère \"|\", \"/\" ou symboles de séparation inutiles.\n\nDensité : Si une ligne d'impact dépasse 20 mots, ampute les adjectifs pour protéger la métrique.\n\nFormatage : JSON BRUT uniquement, sans texte introductif.\n\nSCHÉMA JSON DE SORTIE\nJSON\n{\n  \"TITRE_CIBLE\": \"\",\n  \"ACCROCHE_PROFIL\": \"\",\n  \"COURS_MASTER_LIST\": \"3-5 cours pertinents\",\n  \"PROJET_1_TITRE\": \"\", \"PROJET_1_DESC\": \"\",\n  \"PROJET_2_TITRE\": \"\", \"PROJET_2_DESC\": \"\",\n  \"PROJET_3_TITRE\": \"\", \"PROJET_3_DESC\": \"\",\n  \"EXP_TUTEUR_DESC\": \"\", \"EXP_DECATHLON_DESC\": \"\",\n  \"TOP_SKILLS_LIST\": \"\", \"TOP_IA_SKILLS_LIST\": \"\", \"SOFT_SKILLS_LIST\": \"\"\n}"
+            },
+            {
+              "content": "=NOM DE L'ENTREPRISE : \n{{ $('Agent Recherche').item.json.output[0].content[0].text.company_name }}\n\nINTITULÉ DU POSTE : \n{{ $('Agent Recherche').item.json.output[0].content[0].text.job_title }} et le contenu : {{ $('Agent Recherche').item.json.output[0].content[0] }}\nVALEURS ET MISSIONS DÉTECTÉES (SEARCH) : \n{{ $json.answerBox.snippet }}\n\nDESCRIPTION COMPLÈTE DE L'OFFRE : \n{{ $('Agent Recherche').item.json.output[0].content[0].text }}\n(ou le champ qui contient tout le texte de l'annonce dans ton premier nœud)\n\n"
+            }
+          ]
+        },
+        "builtInTools": {},
+        "options": {
+          "textFormat": {
+            "textOptions": {
+              "type": "json_schema",
+              "schema": "{\n  \"type\": \"object\",\n  \"properties\": {\n    \"TITRE_CIBLE\": { \"type\": \"string\" },\n    \"ACCROCHE_PROFIL\": { \"type\": \"string\" },\n    \"COURS_MASTER_LIST\": { \"type\": \"string\" },\n    \"PROJET_1_TITRE\": { \"type\": \"string\" },\n    \"PROJET_1_DESC\": { \"type\": \"string\" },\n    \"PROJET_2_TITRE\": { \"type\": \"string\" },\n    \"PROJET_2_DESC\": { \"type\": \"string\" },\n    \"PROJET_3_TITRE\": { \"type\": \"string\" },\n    \"PROJET_3_DESC\": { \"type\": \"string\" },\n    \"EXP_TUTEUR_DESC\": { \"type\": \"string\" },\n    \"EXP_DECATHLON_DESC\": { \"type\": \"string\" },\n    \"SOFT_SKILLS_LIST\": { \"type\": \"string\" },\n    \"TOP_SKILLS_LIST\": { \"type\": \"string\" },\n    \"TOP_IA_SKILLS_LIST\": { \"type\": \"string\" }\n  },\n  \"required\": [\n    \"TITRE_CIBLE\", \"ACCROCHE_PROFIL\", \"COURS_MASTER_LIST\", \n    \"PROJET_1_TITRE\", \"PROJET_1_DESC\", \"PROJET_2_TITRE\", \n    \"PROJET_2_DESC\", \"PROJET_3_TITRE\", \"PROJET_3_DESC\", \n    \"EXP_TUTEUR_DESC\", \"EXP_DECATHLON_DESC\", \"SOFT_SKILLS_LIST\", \n    \"TOP_SKILLS_LIST\", \"TOP_IA_SKILLS_LIST\"\n  ],\n  \"additionalProperties\": false\n}"
+            }
+          }
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 2.1,
+      "position": [
+        128,
+        -16
+      ],
+      "id": "3211ef61-39ab-4c3e-a056-57281390bf1e",
+      "name": "Agent CV",
+      "credentials": {
+        "openAiApi": {
+          "id": "SRZmmUwHmsK6yNUu",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "databasePage",
+        "databaseId": {
+          "__rl": true,
+          "value": "31358422-87d9-8093-b581-df3747c34af8",
+          "mode": "list"
+        },
+        "title": "CVMEL-ON PRO",
+        "propertiesUi": {
+          "propertyValues": [
+            {
+              "key": "Entreprise|title",
+              "title": "={{ $('Agent Recherche').item.json.output[0].content[0].text.company_name }}"
+            },
+            {
+              "key": "Date|date",
+              "date": "2026-02-26T19:56:42",
+              "timezone": "Europe/Paris"
+            },
+            {
+              "key": "Poste|rich_text",
+              "textContent": "={{ $('Agent Recherche').item.json.output[0].content[0].text.job_title }}"
+            },
+            {
+              "key": "Statut|select",
+              "selectValue": "Généré"
+            },
+            {
+              "key": "description de l'offre|rich_text",
+              "textContent": "={{ $('Telegram Trigger').item.json.message.text.substring(0, 2000) }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.notion",
+      "typeVersion": 2.2,
+      "position": [
+        512,
+        -16
+      ],
+      "id": "51e96a05-fe9c-4430-b686-e37e3a0a5ead",
+      "name": "Create a database page",
+      "credentials": {
+        "notionApi": {
+          "id": "AA2VLrTWWASD47t2",
+          "name": "Notion account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Telegram Trigger": {
+      "main": [
+        [
+          {
+            "node": "Agent Recherche",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Copy file": {
+      "main": [
+        [
+          {
+            "node": "Update a document",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update a document": {
+      "main": [
+        [
+          {
+            "node": "Download file",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Download file": {
+      "main": [
+        [
+          {
+            "node": "Send a document",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send a document": {
+      "main": [
+        [
+          {
+            "node": "Delete a file",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Agent CV",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Agent Recherche": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Agent CV": {
+      "main": [
+        [
+          {
+            "node": "Create a database page",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create a database page": {
+      "main": [
+        [
+          {
+            "node": "Copy file",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
+  },
+  "versionId": "f928e102-7dc5-424e-94fa-d7a9a0277c7d",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "92c7afe8cc6b26484f11bb582eb606ca52dcfd22f5234faa95337dbc7344b0f6"
+  },
+  "id": "WQK30vbo1GFAR13K",
+  "tags": []
+}
